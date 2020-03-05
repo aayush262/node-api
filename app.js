@@ -6,6 +6,8 @@ dotenv.config({ path: './config/config.env'});
 
 const bootcamps = require('./routes/bootcamps');
 
+require('./db');
+
 const app = express();
 
 if(process.env.NODE_ENV === 'development'){
@@ -14,12 +16,12 @@ if(process.env.NODE_ENV === 'development'){
 
 app.use('/api/v1/bootcamps',bootcamps);
 
-const Port = process.env.PORT;
+const port = process.env.PORT;
 
-app.listen(Port,function(err,done){
+app.listen(port,function(err,done){
     if(err){
         console.log(err);
     }else{
-        console.log('Server started listening at port' ,Port);
+        console.log('Server started listening at port' ,port);
     }
 })
