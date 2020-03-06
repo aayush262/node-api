@@ -2,10 +2,9 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const errorHandler = require('./middlewares/error');
+const apiRoutes = require('./api_route');
 
 dotenv.config({ path: './config/config.env'});
-
-const bootcamps = require('./routes/bootcamps');
 
 require('./db');
 
@@ -16,7 +15,7 @@ if(process.env.NODE_ENV === 'development'){
     app.use(morgan('dev'));
 }
 
-app.use('/api/v1/bootcamps',bootcamps);
+app.use('/api',apiRoutes);
 app.use((req,res,next)=>{
     next('page not found');
 })
