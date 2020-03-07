@@ -9,9 +9,13 @@ const {
 } = require('../controllers/course');
 
 Router.get('/',getCourses);
+
 Router.get('/:id',getCourse);
+
 Router.post('/',postCourse);
+
 Router.put('/:id',updateCourse);
+
 Router.delete('/:id',deleteCourse);
  
 
